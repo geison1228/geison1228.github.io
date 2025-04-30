@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Oasis Tico - Destinos de Viaje en Costa Rica</title>
+    <link rel="stylesheet" href="imagenes/Imagenes para la apgina/Monteverde copy/20250315_131314.jpg">
+    <style>
+        /* Estilos base */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #1a1a1a;
+            color: white;
+            line-height: 1.6;
+        }
+
+        /* Estilos para el hero header */
+        .hero-header {
+            background: linear-gradient(135deg, #002b7f 0%, #ce1126 100%);
+            padding: 4rem 0;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            width: 100%;
+        }
+
+        .header-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('imagenes/Imagenes para la apgina/Monteverde copy/PSX_20250330_18150528.JPG') center/cover;
+            opacity: 0.2;
+            z-index: 0;
+        }
+
+        .header-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .main-title {
+            font-size: 5rem;
+            font-weight: 900;
+            margin: 0;
+            position: relative;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            animation: titleGlow 2s infinite alternate;
+            background: linear-gradient(45deg, #002b7f, #ffffff, #ce1126);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        @keyframes titleGlow {
+            0% { text-shadow: 0 0 10px #002b7f, 0 0 20px rgba(255,255,255,0.5); }
+            100% { text-shadow: 0 0 20px #ffd700, 0 0 40px rgba(255,255,255,0.8); }
+        }
+
+        .subtitle {
+            font-size: 1.5rem;
+            color: white;
+            margin: 1rem 0;
+            position: relative;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+            font-weight: 300;
+        }
+
+        .instagram-tag {
+            font-size: 1.5rem;
+            color: #ffd700;
+            margin: 1rem 0;
+            position: relative;
+            display: inline-block;
+            padding: 0.5rem 1.5rem;
+            background: rgba(0,0,0,0.3);
+            border-radius: 50px;
+            border: 1px solid #ffd700;
+        }
+
+        .social-buttons a {
+            color: white;
+            margin: 0 10px;
+            font-size: 1.2rem;
+            transition: color 0.3s;
+        }
+
+        .social-buttons a:hover {
+            color: #ffd700;
+        }
+
+        /* Estilos para destinos */
+        .container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            padding: 20px;
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .destination {
+            background: rgba(255,255,255,0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 15px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            box-shadow: 0 8px 16px rgba(255, 0, 0, 0.4);
+            border: 2px solid rgba(255,255,255,0.2);
+        }
+
+        .destination:hover {
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 0 15px 30px rgba(206, 17, 38, 0.6);
+            border-color: #ffd700;
+        }
+
+        .destination img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .destination:hover img {
+            transform: scale(1.1);
+        }
+
+        .destination h3 {
+            margin: 15px;
+            color: #ffd700;
+            text-shadow: 0 0 5px #ff0000, 0 0 10px #ff0000, 0 0 15px #007bff;
+            font-size: 1.5rem;
+        }
+
+        .destination p {
+            margin: 15px;
+            color: #ccc;
+        }
+
+        .destination a {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: linear-gradient(to right, #002b7f, #ce1126);
+            color: white;
+            padding: 10px 20px;
+            border-radius: 50px;
+            text-decoration: none;
+            margin: 15px;
+            font-weight: bold;
+            transition: all 0.3s;
+        }
+
+        .destination a:hover {
+            background: linear-gradient(to right, #ce1126, #002b7f);
+            transform: translateX(5px);
+        }
+
+        /* Estilos para la sección de video y sugerencias */
+        .video-suggestions {
+            display: flex;
+            flex-wrap: wrap;
+            max-width: 1200px;
+            margin: 3rem auto;
+            gap: 2rem;
+            padding: 0 2rem;
+            justify-content: center;
+        }
+
+        .video-container {
+            flex: 1;
+            min-width: 300px;
+            position: relative;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+            background: #333;
+        }
+
+        .video-container iframe {
+            width: 100%;
+            height: 100%;
+            min-height: 200px;
+            border: none;
+        }
+
+        .video-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
+            padding: 1rem;
+            color: white;
+            text-align: center;
+        }
+
+        .suggestions-box {
+            flex: 1;
+            min-width: 300px;
+            background: rgba(255,255,255,0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 15px;
+            padding: 2rem;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+            border: 1px solid rgba(255,255,255,0.2);
+        }
+
+        .suggestions-box h2 {
+            color: #ffd700;
+            margin-top: 0;
+            font-size: 1.8rem;
+            text-shadow: 0 0 5px #00ffff, 0 0 10px #ff0000;
+        }
+
+        .suggestions-box textarea {
+            width: 100%;
+            min-height: 150px;
+            background: rgba(0,0,0,0.3);
+            border: 1px solid #ffd700;
+            color: white;
+            padding: 1rem;
+            border-radius: 10px;
+            margin-bottom: 1rem;
+            font-family: Arial, sans-serif;
+        }
+
+        .btn-submit {
+            background: linear-gradient(to right, #002b7f, #ce1126);
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 50px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .btn-submit:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(206, 17, 38, 0.4);
+        }
+
+        /* Footer */
+        .main-footer {
+            margin-top: 40px;
+            text-align: center;
+            padding: 20px;
+            background-color: #333;
+            width: 100%;
+        }
+
+        .main-footer p {
+            margin: 0;
+            font-size: 1rem;
+            color: #fff;
+        }
+
+        @media (max-width: 768px) {
+            .main-title {
+                font-size: 3rem;
+            }
+            
+            .subtitle {
+                font-size: 1.2rem;
+            }
+            
+            .video-suggestions {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="hero-header">
+        <div class="header-overlay"></div>
+        <div class="header-content">
+            <h1 class="main-title">Oasis Tico</h1>
+            <h2 class="subtitle">Descubre los mejores lugares para visitar y sugiere tu próximo destino.</h2>
+            <h3 class="instagram-tag"><i class="fas fa-camera"></i> Instagram: GeisonC28</h3>
+            <h3 class="instagram-tag"><i class="fas fa-camera"></i> TikTok: geisoncarrillo</h3>
+            <div class="social-buttons">
+                <a href="https://www.facebook.com" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                <a href="https://www.instagram.com" target="_blank"><i class="fab fa-instagram"></i></a>
+                <a href="https://www.twitter.com" target="_blank"><i class="fab fa-twitter"></i></a>
+            </div>
+        </div>
+    </header>
+
+    <div class="container">
+        <div class="destination">
+            <img src="imagenes/Imagenes para la apgina/Monteverde/IMG_20240324_112322_HDR.jpg" alt="Biezans">
+            <h3>Biezans</h3>
+            <p>Ubicada en la pintoresca región de Manuel Antonio, Puntarenas, Playa Biesanz es un pequeño paraíso escondido.</p>
+            <a href="https://example.com/personalizar/arenal">Más detalles <i class="fas fa-arrow-right"></i></a>
+        </div>
+        <div class="destination">
+            <img src="imagenes/Imagenes para la apgina/Monteverde copy/20241222_122932.jpg" alt="Monteverde">
+            <h3>Monteverde</h3>
+            <p>Explora los bosques nubosos y la biodiversidad única.</p>
+            <a href="https://example.com/personalizar/monteverde">Más detalles <i class="fas fa-arrow-right"></i></a>
+        </div>
+        <div class="destination">
+            <img src="imagenes/Imagenes para la apgina/Monteverde copy/20241215_105905.jpg" alt="Rio Celeste">
+            <h3>Rio Celeste</h3>
+            <p>Famoso por su inconfundible color azul turquesa, que parece sacado de un cuento de hadas. Esta maravilla natural es el resultado de un fenómeno químico que ocurre en el punto conocido como "Teñideros".</p>
+            <a href="#">Más detalles <i class="fas fa-arrow-right"></i></a>
+        </div> 
+        <div class="destination">
+            <img src="imagenes/Imagenes para la apgina/Untitled.png" alt="Bahia Ballena">
+            <h3>Bahia Ballena</h3>
+            <p>Santuario natural famoso por su biodiversidad marina y terrestre, y por una formación geológica única que parece una cola de ballena vista desde el aire.</p>
+            <a href="#">Más detalles <i class="fas fa-arrow-right"></i></a>
+        </div>
+        <div class="destination">
+            <img src="imagenes/Imagenes para la apgina/20250105_092440.jpg" alt="Caribe Sur">
+            <h3>Caribe sur</h3> 
+            <p>El Caribe Sur de Costa Rica es una región mágica donde la selva tropical se encuentra con playas de aguas cristalinas y arenas doradas o negras. </p>
+            <a href="#">Más detalles <i class="fas fa-arrow-right"></i></a>
+        </div>
+        <div class="destination">
+            <img src="imagenes/Imagenes para la apgina/Monteverde copy/20241229_105545.jpg" alt="Poceron">
+            <h3>El Poceron</h3>
+            <p> Enclavado en las montañas de la región de Dota,es un paraíso escondido ideal para los amantes de la naturaleza. Se trata de un impresionante cañón natural formado por el río Savegre, uno de los ríos más limpios de Centroamérica..</p>
+            <a href="#">Más detalles <i class="fas fa-arrow-right"></i></a>
+        </div>
+        <div class="destination">
+            <img src="imagenes/Imagenes para la apgina/Monteverde copy/20250315_131147.jpg" alt="Isla Tortuga">
+            <h3>Isla Tortuga</h3>
+            <p>Una joya tropical ubicada en el Golfo de Nicoya, en la costa Pacífica de Costa Rica. Con sus playas de arena blanca, aguas turquesas y palmeras que se mecen con la brisa</p>
+            <a href="#">Más detalles <i class="fas fa-arrow-right"></i></a>
+        </div>
+        <div class="destination">
+            <img src="imagenes/Imagenes para la apgina/Monteverde copy/20250301_073845.jpg " alt="Volcan Turrialba">
+            <h3>Volcan Turrialba</h3>
+            <p> es uno de los volcanes más activos y majestuosos de Costa Rica, on una altitud de 3,340 metros, ofrece vistas espectaculares que, en días despejados, permiten ver tanto el Mar Caribe como el Océano Pacífico</p>
+            <a href="#">Más detalles <i class="fas fa-arrow-right"></i></a>
+        </div>
+        <div class="destination">
+            <img src = "imagenes/Imagenes para la apgina/Monteverde copy/arenal.png" alt="Volcan Arenal">
+            <h3> Volcan Arenal</h3>
+            <p>Cerca de la ciudad de La Fortuna, es uno de los volcanes más icónicos y visitados de Costa Rica. Con una forma cónica perfecta y una altura de 1,670 metros.</p>
+            <a href="#">Más detalles <i class="fas fa-arrow-right"></i></a>
+        </div> 
+        <div class="destination">
+            <img src="imagenes/Imagenes para la apgina/Monteverde copy/Designer (12).jpeg" alt="Manuel Antonio">
+            <h3>Manuel Antonio</h3>
+            <p>Parque nacional con playas de arena blanca y abundante vida silvestre.</p>
+            <a href="#">Más detalles <i class="fas fa-arrow-right"></i></a>
+        </div>
+        <div class="destination">
+            <img src="imagenes/Imagenes para la apgina/Monteverde copy/Designer (12).jpeg" alt="Manuel Antonio">
+            <h3>Manuel Antonio</h3>
+            <p>Parque nacional con playas de arena blanca y abundante vida silvestre.</p>
+            <a href="#">Más detalles <i class="fas fa-arrow-right"></i></a>
+        </div>
+        <div class="destination">
+           <img src="imagenes/Imagenes para la apgina/Monteverde copy/Designer (12).jpeg" alt="Manuel Antonio">
+           <h3>Manuel Antonio</h3>
+           <p>Parque nacional con playas de arena blanca y abundante vida silvestre.</p>
+           <a href="#">Más detalles <i class="fas fa-arrow-right"></i></a>
+        </div>
+        <div class="destination">
+          <img src="imagenes/Imagenes para la apgina/Monteverde copy/Designer (12).jpeg" alt="Manuel Antonio">
+          <h3>Manuel Antonio</h3>
+          <p>Parque nacional con playas de arena blanca y abundante vida silvestre.</p>
+          <a href="#">Más detalles <i class="fas fa-arrow-right"></i></a>
+</div>
+
+    </div> 
+        <div class="video-container">
+            <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" allowfullscreen></iframe>
+            <div class="video-overlay">
+                <h3>Mira nuestras aventuras en Costa Rica</h3>
+            </div>
+        </div>
+
+        <div class="suggestions-box">
+            <h2><i class="fas fa-lightbulb"></i> ¡Déjanos tus sugerencias para el siguiente viaje!</h2>
+            <p>Si tienes alguna recomendación o comentario, por favor escríbelo aquí:</p>
+            <form action="send_email.php" method="POST">
+                <textarea name="suggestion" placeholder="Escribe tu sugerencia aquí..." required></textarea>
+                <br>
+                <button type="submit" class="btn-submit"><i class="fas fa-paper-plane"></i> Enviar Sugerencia</button>
+            </form>
+        </div>
+    </div>
+
+    <footer class="main-footer">
+        <p>&copy; 2023 ExploraTico. Todos los derechos reservados.</p>
+    </footer>
+</body>
+</html>
