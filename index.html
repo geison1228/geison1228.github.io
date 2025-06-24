@@ -20,6 +20,36 @@
   <!-- Tu contenido aquí -->
   <h1>¡Bienvenido a la jungla! 🍃</h1>
   <p>Mueve el cursor para ver al perezoso...</p>
+
+  <!-- Cursor perezoso para móviles -->
+<div id="perezoso-movil" style="
+  position: fixed;
+  font-size: 30px;
+  pointer-events: none;
+  z-index: 9999;
+  display: none;
+">🦥</div>
+
+<script>
+  // Detecta si es móvil
+  const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+  const perezoso = document.getElementById('perezoso-movil');
+
+  if (isMobile) {
+    perezoso.style.display = 'block';
+    
+    // Mueve el perezoso con el tacto
+    document.addEventListener('touchmove', (e) => {
+      const touch = e.touches[0];
+      perezoso.style.left = (touch.clientX - 15) + 'px';
+      perezoso.style.top = (touch.clientY - 15) + 'px';
+    });
+    
+    // Oculta el cursor original (si existe)
+    document.body.style.cursor = 'none';
+  }
+</script>
+</body> <!-- Asegúrate de que esto esté al final -->
 </body>
 </html>
 
