@@ -1,0 +1,25 @@
+.boton-costa-rica {
+  display: inline-block;
+  padding: 12px 25px;
+  background: linear-gradient(135deg, #2E8B57 0%, #69C9D0 50%, #FFD700 100%); /* Verde selva, azul mar y dorado */
+  color: white;
+  font-family: 'Arial', sans-serif;
+  font-weight: bold;
+  text-decoration: none;
+  border-radius: 30px;
+  border: 2px solid #FFD700; /* Borde dorado */
+  box-shadow: 0 4px 15px rgba(46, 139, 87, 0.3); /* Sombra verde */
+  text-align: center;
+  transition: all 0.3s ease;
+  font-size: 18px;
+}
+
+.boton-costa-rica:hover {
+  background: linear-gradient(135deg, #69C9D0 0%, #2E8B57 50%, #EE1D52 100%); /* Efecto hover con rojo */
+  transform: translateY(-3px);
+  box-shadow: 0 8px 20px rgba(46, 139, 87, 0.4);
+}
+
+.boton-costa-rica i {
+  margin-right: 10px;
+}
