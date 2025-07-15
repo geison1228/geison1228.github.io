@@ -3,166 +3,295 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Playa Biezans - Paraíso Escondido | Costa Rica</title>
+    <title>OASIS TICO - Descubre Costa Rica</title>
     <style>
-        /* Paleta de Costa Rica */
         :root {
-            --azul-cielo: #25A6D9;
-            --verde-selva: #2E8B57;
-            --amarillo-sol: #FFD700;
-            --arena: #F5DEB3;
-            --rojo-pasion: #E74C3C;
+            --primary: #2ecc71;
+            --secondary: #3498db;
+            --accent: #e74c3c;
+            --dark: #2c3e50;
+            --light: #ecf0f1;
         }
         
         body {
-            font-family: 'Arial', sans-serif;
+            font-family: 'Poppins', sans-serif;
             margin: 0;
-            background-color: #f0f8ff;
-            color: #333;
+            padding: 0;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            color: var(--dark);
         }
         
         header {
-            background: linear-gradient(135deg, var(--verde-selva), var(--azul-cielo));
+            background: linear-gradient(to right, var(--primary), var(--secondary));
             color: white;
             padding: 2rem;
             text-align: center;
             position: relative;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
         }
         
         h1 {
             margin: 0;
             font-size: 2.5rem;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+            animation: fadeIn 1s ease-in;
         }
         
-        .hero {
-            height: 60vh;
-            background-image: url('https://raw.githubusercontent.com/geison1228/OasisTico.io/main/assets/fotos-portada/biezans.jpg');
-            background-size: cover;
-            background-position: center;
+        .subtitle {
+            font-size: 1.2rem;
+            margin-top: 0.5rem;
+            opacity: 0.9;
+        }
+        
+        .sloth-hint {
+            position: absolute;
+            bottom: 10px;
+            right: 20px;
+            font-size: 0.9rem;
+            background: rgba(255,255,255,0.2);
+            padding: 5px 10px;
+            border-radius: 20px;
+            animation: bounce 2s infinite;
+        }
+        
+        .social-links {
             display: flex;
-            align-items: flex-end;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 1rem;
+        }
+        
+        .social-link {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            transition: transform 0.3s;
+        }
+        
+        .social-link:hover {
+            transform: translateY(-3px);
+        }
+        
+        .destinations {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            padding: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .destination-card {
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
             position: relative;
         }
         
-        .hero::after {
-            content: '';
+        .destination-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 12px 25px rgba(0,0,0,0.15);
+        }
+        
+        .card-image {
+            height: 200px;
+            background-size: cover;
+            background-position: center;
+            position: relative;
+        }
+        
+        .card-overlay {
             position: absolute;
             bottom: 0;
             left: 0;
             right: 0;
-            height: 50%;
             background: linear-gradient(to top, rgba(0,0,0,0.7), transparent);
-        }
-        
-        .hero-text {
-            position: relative;
-            z-index: 1;
+            padding: 1rem;
             color: white;
-            padding: 2rem;
-            width: 100%;
         }
         
-        .info-section {
-            display: flex;
-            flex-wrap: wrap;
-            padding: 2rem;
-            gap: 2rem;
-        }
-        
-        .card {
-            flex: 1 1 300px;
-            background: white;
-            border-radius: 10px;
-            overflow: hidden;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-            transition: transform 0.3s;
-        }
-        
-        .card:hover {
-            transform: translateY(-10px);
-        }
-        
-        .card img {
-            width: 100%;
-            height: 200px;
-            object-fit: cover;
+        .card-title {
+            margin: 0;
+            font-size: 1.5rem;
         }
         
         .card-content {
             padding: 1.5rem;
         }
         
-        .direccion {
-            background-color: var(--amarillo-sol);
-            padding: 1rem;
-            border-radius: 5px;
-            margin-top: 1rem;
+        .card-description {
+            margin-bottom: 1.5rem;
+            line-height: 1.6;
+        }
+        
+        .btn {
+            display: inline-block;
+            background: var(--primary);
+            color: white;
+            padding: 0.8rem 1.5rem;
+            border-radius: 30px;
+            text-decoration: none;
             font-weight: bold;
+            transition: all 0.3s;
+            border: none;
+            cursor: pointer;
+        }
+        
+        .btn:hover {
+            background: var(--secondary);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .btn-more {
+            background: var(--accent);
+        }
+        
+        .btn-more:hover {
+            background: #c0392b;
+        }
+        
+        .home-btn {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            z-index: 100;
+            background: var(--dark);
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            transition: all 0.3s;
+        }
+        
+        .home-btn:hover {
+            transform: scale(1.1);
+        }
+        
+        .home-icon {
+            color: white;
+            font-size: 1.5rem;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-5px); }
         }
         
         footer {
-            background-color: var(--verde-selva);
+            background: var(--dark);
             color: white;
             text-align: center;
-            padding: 1.5rem;
+            padding: 2rem;
             margin-top: 2rem;
         }
         
-        @media (max-width: 768px) {
-            .hero {
-                height: 40vh;
-            }
+        /* Efecto del perezoso */
+        .sloth {
+            position: fixed;
+            bottom: -100px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 3rem;
+            transition: all 2s ease-in-out;
+            opacity: 0;
+        }
+        
+        body:hover .sloth {
+            bottom: 20px;
+            opacity: 1;
         }
     </style>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 <body>
     <header>
-        <h1>Playa Biezans</h1>
-        <p>Un tesoro escondido en Manuel Antonio</p>
+        <h1>OASIS TICO</h1>
+        <p class="subtitle">Descubre los mejores lugares para visitar y sugiere tu próximo destino</p>
+        <p class="sloth-hint">Mueve el cursor para ver al perezoso 😊️</p>
+        
+        <div class="social-links">
+            <a href="#" class="social-link">
+                <i class="fab fa-tiktok"></i> TIKTOK
+            </a>
+            <a href="#" class="social-link">
+                <i class="fab fa-instagram"></i> Instagram
+            </a>
+        </div>
+        
+        <div class="sloth">🦥</div>
     </header>
     
-    <section class="hero">
-        <div class="hero-text">
-            <h2>Paraíso de aguas cristalinas</h2>
-            <p>Rodeada de exuberante vegetación tropical</p>
-        </div>
-    </section>
-    
-    <section class="info-section">
-        <div class="card">
-            <img src="detalles/bie.jpg" alt="Arena dorada de Biezans">
-            <div class="card-content">
-                <h3>Arena Dorada</h3>
-                <p>Playas de suave arena blanca perfecta para relajarse.</p>
-            </div>
-        </div>
-        
-        <div class="card">
-            <img src="/detalles/IMG_20240324_095041_HDR (1).jpg" alt="Snorkel en Biezans">
-            <div class="card-content">
-                <h3>Vida Marina</h3>
-                <p>Ideal para snorkel con tortugas y peces tropicales.</p>
-            </div>
-        </div>
-        
-        <div class="card">
-            <img src="detalles/Biezans detalles.html" alt="Atardecer en Biezans">
-            <div class="card-content">
-                <h3>Atardeceres Mágicos</h3>
-                <p>Los mejores atardeceres de la costa pacífica.</p>
-                <div class="direccion">
-                    📍 Dirección: Playa Biezans, Manuel Antonio, Puntarenas, Costa Rica
-                    <br>
-                    🚗 Acceso: Sendero de 10 minutos desde el Hotel Tulemar
+    <main class="destinations">
+        <article class="destination-card">
+            <div class="card-image" style="background-image: url('https://images.unsplash.com/photo-1566438480900-0609be27a4be?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80');">
+                <div class="card-overlay">
+                    <h2 class="card-title">Biezans</h2>
                 </div>
             </div>
-        </div>
-    </section>
+            <div class="card-content">
+                <p class="card-description">Ubicada en la pintoresca región de Manuel Antonio, Puntarenas, Playa Biesanz es un pequeño paraíso escondido con aguas cristalinas y arena blanca.</p>
+                <a href="#" class="btn btn-more">Más detalles →</a>
+            </div>
+        </article>
+        
+        <article class="destination-card">
+            <div class="card-image" style="background-image: url('https://images.unsplash.com/photo-1534766555765-27a8d3432611?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80');">
+                <div class="card-overlay">
+                    <h2 class="card-title">Monteverde</h2>
+                </div>
+            </div>
+            <div class="card-content">
+                <p class="card-description">Explora los bosques nubosos y la biodiversidad única de Monteverde, donde la naturaleza se muestra en su máximo esplendor.</p>
+                <a href="#" class="btn btn-more">Más detalles →</a>
+            </div>
+        </article>
+        
+        <article class="destination-card">
+            <div class="card-image" style="background-image: url('https://images.unsplash.com/photo-1586016413664-864c0dd76f53?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80');">
+                <div class="card-overlay">
+                    <h2 class="card-title">Río Celeste</h2>
+                </div>
+            </div>
+            <div class="card-content">
+                <p class="card-description">Famoso por su inconfundible color azul turquesa, que parece sacado de un cuento de hadas. Esta maravilla natural es el resultado de un fenómeno químico único.</p>
+                <a href="#" class="btn btn-more">Más detalles →</a>
+            </div>
+        </article>
+        
+        <article class="destination-card">
+            <div class="card-image" style="background-image: url('https://images.unsplash.com/photo-1505228395891-9a51e7e86bf6?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80');">
+                <div class="card-overlay">
+                    <h2 class="card-title">Bahía Ballena</h2>
+                </div>
+            </div>
+            <div class="card-content">
+                <p class="card-description">Santuario natural famoso por su biodiversidad marina y terrestre, y por una formación geológica única que parece una cola de ballena vista desde el aire.</p>
+                <a href="#" class="btn btn-more">Más detalles →</a>
+            </div>
+        </article>
+    </main>
+    
+    <a href="#" class="home-btn">
+        <i class="fas fa-home home-icon"></i>
+    </a>
     
     <footer>
-        <p>© 2025 OasisTico - </p>
-        <p>🌴 Vive la magia de Costa Rica 🌴</p>
+        <p>© 2023 OASIS TICO - Todos los derechos reservados</p>
     </footer>
 </body>
 </html>
