@@ -3,269 +3,166 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Playa Biesanz - Costa Rica | Detalles</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <title>Playa Biezans - Paraíso Escondido | Costa Rica</title>
     <style>
+        /* Paleta de Costa Rica */
         :root {
-            --bg-dark: #121212;
-            --bg-card: #1e1e1e;
-            --text-primary: #e0e0e0;
-            --text-secondary: #a0a0a0;
-            --accent: #4ecdc4; /* Turquesa moderno */
-            --accent-hover: #72f8ef;
-            --shadow: 0 8px 32px rgba(0, 0, 0, 0.36);
+            --azul-cielo: #25A6D9;
+            --verde-selva: #2E8B57;
+            --amarillo-sol: #FFD700;
+            --arena: #F5DEB3;
+            --rojo-pasion: #E74C3C;
         }
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        }
+        
         body {
-            background-color: var(--bg-dark);
-            color: var(--text-primary);
-            line-height: 1.7;
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            background-color: #f0f8ff;
+            color: #333;
         }
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 20px;
-        }
-        /* Header con gradiente sutil */
+        
         header {
+            background: linear-gradient(135deg, var(--verde-selva), var(--azul-cielo));
+            color: white;
+            padding: 2rem;
             text-align: center;
-            margin-bottom: 40px;
-            background: linear-gradient(135deg, #1a2a3a, #121212);
-            padding: 40px 0;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            position: relative;
         }
+        
         h1 {
-            font-size: 2.8rem;
-            margin-bottom: 10px;
-            background: linear-gradient(to right, var(--accent), #a5f8e1);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            font-weight: 800;
+            margin: 0;
+            font-size: 2.5rem;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
         }
-        header p {
-            color: var(--text-secondary);
-            font-size: 1.1rem;
-        }
-        /* Botón con efecto neón */
-        .back-btn {
-            display: inline-block;
-            margin-top: 25px;
-            padding: 12px 25px;
-            background: transparent;
-            color: var(--accent);
-            text-decoration: none;
-            border: 2px solid var(--accent);
-            border-radius: 50px;
-            font-weight: 600;
-            letter-spacing: 1px;
-            transition: all 0.4s;
-        }
-        .back-btn:hover {
-            background: var(--accent);
-            color: var(--bg-dark);
-            box-shadow: 0 0 15px var(--accent);
-            transform: translateY(-3px);
-        }
-        /* Tarjetas con vidrio esmerilado (glassmorphism) */
-        .section {
-            background: rgba(30, 30, 30, 0.7);
-            backdrop-filter: blur(10px);
-            border-radius: 16px;
-            padding: 30px;
-            margin-bottom: 40px;
-            border: 1px solid rgba(255, 255, 255, 0.08);
-            box-shadow: var(--shadow);
-        }
-        h2 {
-            color: var(--accent);
-            margin-bottom: 25px;
-            font-size: 1.8rem;
+        
+        .hero {
+            height: 60vh;
+            background-image: url('https://raw.githubusercontent.com/geison1228/OasisTico.io/main/assets/fotos-portada/biezans.jpg');
+            background-size: cover;
+            background-position: center;
             display: flex;
-            align-items: center;
-            gap: 10px;
+            align-items: flex-end;
+            position: relative;
         }
-        /* Galería con hover brillante */
-        .gallery {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-            gap: 25px;
-            margin-top: 25px;
+        
+        .hero::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 50%;
+            background: linear-gradient(to top, rgba(0,0,0,0.7), transparent);
         }
-        .gallery img {
+        
+        .hero-text {
+            position: relative;
+            z-index: 1;
+            color: white;
+            padding: 2rem;
             width: 100%;
-            height: 220px;
-            object-fit: cover;
-            border-radius: 12px;
-            transition: all 0.4s;
-            cursor: pointer;
-            border: 1px solid rgba(255, 255, 255, 0.1);
         }
-        .gallery img:hover {
-            transform: scale(1.03);
-            box-shadow: 0 0 20px rgba(78, 205, 196, 0.3);
-            border-color: var(--accent);
+        
+        .info-section {
+            display: flex;
+            flex-wrap: wrap;
+            padding: 2rem;
+            gap: 2rem;
         }
-        /* Mapa con borde sutil */
-        .map-container {
+        
+        .card {
+            flex: 1 1 300px;
+            background: white;
+            border-radius: 10px;
             overflow: hidden;
-            border-radius: 12px;
-            margin-top: 25px;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-        }
-        /* Grid de información con iconos */
-        .info-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: 25px;
-            margin-top: 25px;
-        }
-        .info-card {
-            background: var(--bg-card);
-            padding: 25px;
-            border-radius: 12px;
-            border-left: 4px solid var(--accent);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
             transition: transform 0.3s;
         }
-        .info-card:hover {
-            transform: translateY(-5px);
-            border-left: 4px solid var(--accent-hover);
+        
+        .card:hover {
+            transform: translateY(-10px);
         }
-        .info-card h3 {
-            color: var(--accent);
-            margin-bottom: 15px;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            font-size: 1.2rem;
+        
+        .card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
         }
-        .info-card p {
-            color: var(--text-secondary);
+        
+        .card-content {
+            padding: 1.5rem;
         }
-        /* Footer minimalista */
+        
+        .direccion {
+            background-color: var(--amarillo-sol);
+            padding: 1rem;
+            border-radius: 5px;
+            margin-top: 1rem;
+            font-weight: bold;
+        }
+        
         footer {
+            background-color: var(--verde-selva);
+            color: white;
             text-align: center;
-            padding: 30px;
-            background: rgba(10, 10, 10, 0.8);
-            margin-top: 50px;
-            color: var(--text-secondary);
-            font-size: 0.9rem;
+            padding: 1.5rem;
+            margin-top: 2rem;
         }
-        /* Responsive */
+        
         @media (max-width: 768px) {
-            h1 { font-size: 2rem; }
-            .gallery { grid-template-columns: 1fr; }
-            .info-grid { grid-template-columns: 1fr; }
+            .hero {
+                height: 40vh;
+            }
         }
     </style>
 </head>
 <body>
     <header>
-        <div class="container">
-            <h1>Playa Biesanz tests</h1>
-            <p>Un refugio de aguas celestiales en la jungla</p>
-            <a href="Assets/Fotos  Biezans/IMG_20240324_095052_HDR.jpg" class="back-btn">
-                <i class="fas fa-chevron-left"></i> Explorar más destinos
-            </a>
-        </div>
+        <h1>Playa Biezans</h1>
+        <p>Un tesoro escondido en Manuel Antonio</p>
     </header>
-
-    <main class="container">
-        <!-- Galería -->
-        <section class="section">
-            <h2><i class="fas fa-images"></i> Galería</h2>
-            <div class="gallery"> 
-                
-<!-- Imagen 2 -->
-<img 
-  src="detalles/bie.jpg" 
-  alt="Volcán Arenal al atardecer con cielo naranja" 
-  
->
-
-<!-- Imagen 3 -->
-<img 
-  src="Assets/Fotos  Biezans/IMG_20240324_112241_1_HDR.jpg" 
-  alt="Selva tropical con tucanes y vegetación exuberante" 
-  width="800" 
-  height="600" 
-  loading="lazy"
-  decoding="async"
-  
->
-
-<!-- Imagen 4 -->
-<img 
-  src="Assets/Fotos  Biezans/IMG_20240324_154501_HDR.jpg" 
-  alt="Cascada en medio de la jungla con agua turquesa" 
-  width="800" 
-  height="600" 
-  loading="lazy"
-  decoding="async"
-  
->
-<!-- Imagen 5 -->
-<img 
-  src="https://photos.google.com/u/0/search/Cg1QbGF5YSBCaWVzYW56IhoSGAoWEhQKEjB4YzNiYzg5MzdiOWVjY2M2NijKmq%2Ff%2FzI%3D/photo/AF1QipN1KjlGJbu7CoDmUmplYxK1MU5oMRhGFv1Kau8v?hl=es" 
-  alt="Cascadamedio de la jungla con agua turquesa" 
-  width="800" 
-  height="600" 
-  loading="lazy"
-  decoding="async"
- 
->
+    
+    <section class="hero">
+        <div class="hero-text">
+            <h2>Paraíso de aguas cristalinas</h2>
+            <p>Rodeada de exuberante vegetación tropical</p>
+        </div>
+    </section>
+    
+    <section class="info-section">
+        <div class="card">
+            <img src="detalles/bie.jpg" alt="Arena dorada de Biezans">
+            <div class="card-content">
+                <h3>Arena Dorada</h3>
+                <p>Playas de suave arena blanca perfecta para relajarse.</p>
             </div>
-        </section>
-
-        <!-- Cómo llegar -->
-        <section class="section">
-            <h2><i class="fas fa-map-signs"></i> ¿Cómo llegar?</h2>
-            <p style="margin-bottom: 15px; color: var(--text-primary);">
-                Ubicada a 7km de Quepos, el acceso es una aventura:
-            </p>
-            <ul style="margin: 20px 0; padding-left: 20px; color: var(--text-secondary);">
-                <li><strong>Desde San José:</strong> Ruta 27 hacia Caldera, luego Ruta 34 (3h)</li>
-                <li><strong>Transporte público:</strong> Bus Quepos-Manuel Antonio (parada "Hotel Sí Como No")</li>
-                <li><strong>Caminata final:</strong> Sendero de 500m a través del bosque</li>
-            </ul>
-            <div class="map-container">
-                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15720.129599158422!2d-84.143455!3d9.929722!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8fa1719e68a4e8b5%3A0x1aee4b8e46a9a5e9!2sPlaya%20Biesanz!5e0!3m2!1ses!2scr!4v1620000000000!5m2!1ses!2scr" allowfullscreen="" loading="lazy"></iframe>
+        </div>
+        
+        <div class="card">
+            <img src="/detalles/IMG_20240324_095041_HDR (1).jpg" alt="Snorkel en Biezans">
+            <div class="card-content">
+                <h3>Vida Marina</h3>
+                <p>Ideal para snorkel con tortugas y peces tropicales.</p>
             </div>
-        </section>
-
-        <!-- Información destacada -->
-        <section class="section">
-            <h2><i class="fas fa-star"></i> Lo que debes saber</h2>
-            <div class="info-grid">
-                <div class="info-card">
-                    <h3><i class="fas fa-water"></i> Mejor época</h3>
-                    <p>Diciembre-Abril (temporada seca). Aguas más claras para snorkeling.</p>
-                </div>
-                <div class="info-card">
-                    <h3><i class="fas fa-ban"></i> Prohibiciones</h3>
-                    <p>No se permite: Alcohol, música alta o extraer corales/conchas.</p>
-                </div>
-                <div class="info-card">
-                    <h3><i class="fas fa-paw"></i> Fauna</h3>
-                    <p>Monos tití, perezosos, iguanas y aves tropicales.</p>
-                </div>
-                <div class="info-card">
-                    <h3><i class="fas fa-umbrella-beach"></i> Servicios</h3>
-                    <p>No hay restaurantes. Lleva agua y snacks. Alquiler de kayaks disponible.</p>
+        </div>
+        
+        <div class="card">
+            <img src="detalles/Biezans detalles.html" alt="Atardecer en Biezans">
+            <div class="card-content">
+                <h3>Atardeceres Mágicos</h3>
+                <p>Los mejores atardeceres de la costa pacífica.</p>
+                <div class="direccion">
+                    📍 Dirección: Playa Biezans, Manuel Antonio, Puntarenas, Costa Rica
+                    <br>
+                    🚗 Acceso: Sendero de 10 minutos desde el Hotel Tulemar
                 </div>
             </div>
-        </section>
-    </main>
-
+        </div>
+    </section>
+    
     <footer>
-        <p>OasisTico</p>
-        <p style="margin-top: 10px; font-size: 0.8rem;">
-            <i class="fas fa-leaf" style="color: var(--accent);"></i> Protegemos los ecosistemas marinos
-        </p>
+        <p>© 2025 OasisTico - </p>
+        <p>🌴 Vive la magia de Costa Rica 🌴</p>
     </footer>
 </body>
 </html>
